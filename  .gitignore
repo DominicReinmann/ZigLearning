@@ -1,0 +1,11 @@
+# Ignore all Zig cache directories and files
+.zig-cache/
+.zig-cache/*
+*.zig-cache
+
+# If you want to ignore all Zig files (though you might want to keep these)
+# *.zig
+
+# If you want to ignore other Zig-related items
+.zigmod
+.zigtools
