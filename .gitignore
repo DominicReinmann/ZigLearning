@@ -9,3 +9,6 @@
 # If you want to ignore other Zig-related items
 .zigmod
 .zigtools
+
+# output
+zig-out/
