@@ -95,6 +95,7 @@ pub fn main() !void {
     var user2 = User2{
         .id = 1,
         .power = 100,
+        .name = "Goku",
     };
     user2.power += 0;
 
@@ -107,20 +108,28 @@ pub fn main() !void {
     const user_p = &user2;
     print("{any}\n", .{@TypeOf(user_p)});
 
-    print("User {d} has the power of {d}\n", .{ user2.id, user2.power });
+    print("User {d} has the power of {d}\n and the name {s}\n", .{ user2.id, user2.power, user2.name });
 
     var user3 = User2{
         .id = 2,
         .power = 200,
+        .name = "Son",
     };
 
     user3.levelUp();
 
-    print("User {d} has the power of {d}\n", .{ user3.id, user3.power });
+    print("User {d} has the power of {d}\n and the name {s}\n", .{ user3.id, user3.power, user3.name });
+
+    //
+    const arr = std.ArrayList(i32).init();
+    arr[0] = 1233;
+    arr[1] = 245;
+    print("{any}\n", .{arr});
 }
 
 // accept pointer so the main object gets modified and not the copy
 fn levelUp(user: *User2) void {
+    print("{*}\n{*}\n", .{ &user, user });
     var u = user;
     u.power += 1;
 }
@@ -128,6 +137,7 @@ fn levelUp(user: *User2) void {
 pub const User2 = struct {
     id: i64,
     power: i32,
+    name: []const u8,
 
     fn levelUp(user: *User2) void {
         user.power += 1;
